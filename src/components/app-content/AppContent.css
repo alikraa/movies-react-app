@@ -1,0 +1,9 @@
+.movies-app__app-content {
+  margin: 0 auto;
+  width: 1280px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-bottom: 70px;
+}

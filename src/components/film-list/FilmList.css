@@ -1,0 +1,89 @@
+.movies-app__film-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* FilmCard */
+.movies-app__film-card-wrapper {
+  width: 430px;
+  height: 300px;
+  border: 1px solid rgb(212, 209, 209);
+  box-shadow: 5px 3px 10px rgba(146, 145, 145, 0.5);
+  display: flex;
+  flex-direction: row;
+  margin: 0 25px 20px 0;
+  font-size: 19px;
+}
+
+.film-card__info {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.film-card__cover {
+  width: 210px;
+  height: 299px;
+  border-right: 1px solid rgb(212, 209, 209);
+}
+
+.info__header-star {
+  height: 28px;
+}
+
+.info__header-bookmark {
+  height: 22px;
+  padding-top: 5px;
+}
+
+.info__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px 0 0;
+}
+
+.info__header-rating {
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+.info__button-more {
+  height: 55px;
+  text-align: left;
+  font-size: 19px;
+  background-color: #fff;
+  border: none;
+  border-top: 1px solid rgb(212, 209, 209);
+}
+
+.info__button-more a {
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.info__button-more a:visited {
+  color: #000;
+}
+
+.info__button-more a:hover {
+  color: rgb(0, 68, 255);
+}
+
+.info__button-more a:active {
+  color: rgb(1, 39, 143);
+}
+
+.info__header-rating,
+.info__film-name {
+  padding-left: 12px;
+}
+
+.info__film-name {
+  padding-right: 20px;
+  font-size: 19px;
+  font-weight: 600;
+}

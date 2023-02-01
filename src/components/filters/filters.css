@@ -1,0 +1,66 @@
+.movies-app__filters {
+  padding: 20px 20px 20px;
+  border: 1px solid rgb(212, 209, 209);
+  box-shadow: 5px 3px 10px rgba(146, 145, 145, 0.5);
+  width: 300px;
+  height: 770px;
+  margin-right: 65px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.filters__header {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.head {
+  margin-bottom: 20px;
+}
+
+.filters__header-button {
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.filters__header-button:hover {
+  background-color: rgb(110, 110, 110);
+}
+
+.filters__header-button:active {
+  background-color: rgb(0, 0, 0);
+}
+
+.filters__sort-graduation,
+.filters__sort-years,
+.filters__header-button {
+  width: 260px;
+  height: 45px;
+  font-size: 17px;
+}
+
+.filters__sort-graduation,
+.filters__sort-years {
+  padding-left: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 5px;
+}
+
+.filters__sort-graduation:hover, .filters__sort-years:hover {
+  background-color: rgb(201, 200, 200);
+}
+
+.filters__sort-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.filters__genres {
+  height: 300px;
+  overflow: auto;
+  font-size: 18px;
+  margin-bottom: 30px;
+}

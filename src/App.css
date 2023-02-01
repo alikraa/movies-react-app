@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../src/assets/fonts/Roboto-Regular.ttf'), url('../src/assets/fonts/Roboto-Medium.ttf');
+}

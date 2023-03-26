@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FilmCardProps } from '../../ts/interfaces';
+import { Authorization } from '../authorization/authorization';
+import { FilmCardProps, State } from '../../ts/interfaces';
 import filmIcon from '../../assets/img/film-icon.svg';
 import selectedStarIcon from '../../assets/img/selected-star-icon.svg';
 import starIcon from '../../assets/img/star-icon.svg';
@@ -16,8 +18,22 @@ function FilmCard({
   filmName,
   filmId,
 }: FilmCardProps) {
+  const isAuthorization = useSelector(
+    (state: State) => state.isAuthorization.authorizationFlag
+  );
+  const [authorization, setAuthorization] = useState(true);
+
+  const [star, setStar] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
+
   const [favouritedList, setFavouritedList] = useState([]);
   const [watchLaterList, setWatchLaterList] = useState([]);
+
+  useEffect(() => {
+    if (isAuthorization) {
+      setAuthorization(true);
+    }
+  });
 
   const addList = (event: React.MouseEvent<HTMLImageElement>) => {
     if (event.currentTarget.id === VALUES.star) {
@@ -29,8 +45,23 @@ function FilmCard({
     }
   };
 
-  const [star, setStar] = useState(false);
-  const [bookmark, setBookmark] = useState(false);
+  const checkAuthorization = (
+    event: React.MouseEvent<HTMLImageElement>,
+    icon: boolean,
+    setIcon: (arg0: boolean) => void
+  ) => {
+    if (isAuthorization) {
+      addList(event);
+
+      if (icon) {
+        setIcon(false);
+      } else {
+        setIcon(true);
+      }
+    } else {
+      setAuthorization(false);
+    }
+  };
 
   return (
     <div className={styles.filmCardWrapper} id={filmId.toString()}>
@@ -50,8 +81,7 @@ function FilmCard({
             className={styles.star}
             id="star"
             onClick={(event) => {
-              star ? setStar(false) : setStar(true);
-              addList(event);
+              checkAuthorization(event, star, setStar);
             }}
           />
           <img
@@ -60,8 +90,7 @@ function FilmCard({
             className={styles.bookmark}
             id="bookmark"
             onClick={(event) => {
-              bookmark ? setBookmark(false) : setBookmark(true);
-              addList(event);
+              checkAuthorization(event, bookmark, setBookmark);
             }}
           />
         </div>
@@ -82,6 +111,7 @@ function FilmCard({
           </Link>
         </button>
       </div>
+      <Authorization isOpen={authorization} setIsOpen={setAuthorization} />
     </div>
   );
 }

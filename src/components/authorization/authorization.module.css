@@ -1,0 +1,82 @@
+.field__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.39);
+  font-size: 20px;
+  z-index: 1;
+}
+
+.field {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  background-color: #e7e8f7;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.field__header {
+  font-size: 25px;
+  color: black;
+}
+
+.field__closeBtn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -30px;
+  left: 160px;
+  background-color: #2647cb;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.field__closeBtn:hover,
+.field__itemBtn:hover {
+  background-color: #6a72ff;
+}
+
+.field__closeBtn:active,
+.field__itemBtn:active {
+  background-color: #0603af;
+}
+
+.field__form {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.field__item {
+  width: 270px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.field__itemBtn {
+  background-color: #2647cb;
+  color: #fff;
+}
+
+.field__checkData {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(177, 15, 15);
+}

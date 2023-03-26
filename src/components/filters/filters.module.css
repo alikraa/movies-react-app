@@ -1,0 +1,82 @@
+.filters {
+  padding: 20px 20px 20px;
+  border: 1px solid rgb(212, 209, 209);
+  box-shadow: 5px 3px 10px rgba(146, 145, 145, 0.5);
+  width: 300px;
+  height: 770px;
+  margin-right: 65px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.head {
+  margin-bottom: 20px;
+}
+
+.headerButton {
+  border-radius: 5px;
+  background-color: #2647cb;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.headerButton:hover {
+  background-color: #6a72ff;
+}
+
+.headerButton:active {
+  background-color: #0603af;
+}
+
+.sortGraduationButton,
+.sortYearsButton,
+.headerButton {
+  width: 260px;
+  height: 45px;
+  font-size: 17px;
+}
+
+.sortGraduationButton,
+.sortYearsButton {
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #e7e8f7;
+}
+
+.sortGraduationButton:hover,
+.sortYearsButton:hover {
+  background-color: #cdd0ff;
+}
+
+.sortText {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.genres {
+  height: 290px;
+  overflow-y: auto;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.genres::-webkit-scrollbar {
+  width: 10px;
+}
+
+.genres::-webkit-scrollbar-track {
+  background-color: #e7e8f7;
+  border-radius: 10px;
+}
+
+.genres::-webkit-scrollbar-thumb {
+  background-color: #2647cb;
+  border-radius: 10px;
+}

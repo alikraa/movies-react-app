@@ -1,0 +1,205 @@
+.filmList {
+  width: 1280px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* FilmCard */
+.filmCardWrapper {
+  width: 360px;
+  height: 230px;
+  border: 1px solid rgb(212, 209, 209);
+  box-shadow: 5px 3px 10px rgba(145, 145, 146, 0.5);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
+.filmCardWrapper:hover {
+  box-shadow: 5px 3px 15px #eb98a5;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.filmCardInfo {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filmCardCover,
+.cover {
+  width: 170px;
+  height: 228px;
+}
+
+.star {
+  height: 28px;
+  margin-right: 7px;
+}
+
+.bookmark {
+  height: 22px;
+  padding-top: 5px;
+}
+
+.star,
+.bookmark {
+  cursor: pointer;
+}
+
+.filmCardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px 0 0;
+}
+
+.rating {
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+.buttonMore {
+  height: 55px;
+  text-align: left;
+  font-size: 17px;
+  background-color: #e7e8f7;
+  border: none;
+  border-top: 1px solid rgb(212, 209, 209);
+}
+
+.buttonMore a {
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.buttonMore a:visited {
+  color: #000;
+}
+
+.buttonMore a:hover {
+  background: linear-gradient(to right, #2647cb, #e0a3ae);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.buttonMore a:active {
+  color: rgb(1, 39, 143);
+}
+
+.rating,
+.filmName {
+  padding-left: 12px;
+}
+
+.filmName {
+  padding-right: 20px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* FilmDetails */
+.details {
+  overflow: hidden;
+}
+
+.detailsHeader {
+  height: 600px;
+  background-color: #383838;
+  margin-bottom: 40px;
+}
+
+.backgroundImg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+  filter: blur(3px) brightness(50%);
+}
+
+.content {
+  position: relative;
+  left: 60px;
+}
+
+.posterImg {
+  width: 350px;
+  height: 470px;
+  position: absolute;
+  top: -535px;
+  left: 230px;
+}
+
+.contentHeader,
+.contentOverview,
+.contentRating {
+  width: 450px;
+  position: relative;
+  top: -540px;
+  left: 630px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 38px;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.contentOverview,
+.contentRating {
+  width: 650px;
+  margin-top: 30px;
+  font-size: 20px;
+  text-align: justify;
+  line-height: 27px;
+}
+
+.contentRating {
+  margin-top: 30px;
+  font-size: 25px;
+}
+
+.more {
+  width: 1100px;
+  margin: 0px auto;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 50px;
+}
+
+.moreHeader {
+  font-size: 27px;
+  margin-left: 10px;
+  border-bottom: 1px solid rgb(212, 209, 209);
+  padding-bottom: 20px;
+}
+
+.moreItem {
+  border-bottom: 1px solid rgb(212, 209, 209);
+  position: relative;
+  padding: 15px;
+}
+
+.itemTitle {
+  font-size: 23px;
+  color: #000;
+}
+
+.itemDetail {
+  position: absolute;
+  top: 17px;
+  left: 530px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(0, 0, 180);
+}
+
+.darkTheme {
+  font-size: 23px;
+  background-color: #252933;
+  color: #fff;
+}

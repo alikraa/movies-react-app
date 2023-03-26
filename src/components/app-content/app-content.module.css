@@ -1,0 +1,7 @@
+.content {
+  margin: 20px auto;
+  width: 1520px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 70px;
+}

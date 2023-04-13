@@ -20,11 +20,9 @@ function Header() {
   const isAuthorization = useSelector(
     (state: State) => state.isAuthorization.authorizationFlag
   );
+
   const [darkTheme, setDarkTheme] = useState(false);
   const [authorization, setAuthorization] = useState(true);
-
-  const favouritedList = getData(VALUES.favouritedList);
-  const watchLaterList = getData(VALUES.watchLaterList);
 
   useEffect(() => {
     const user = getData(userData.userName);
@@ -43,6 +41,9 @@ function Header() {
   };
 
   const showUserList = (event: HTMLButtonElement['name']) => {
+    const favouritedList = getData(VALUES.favouritedList) || VALUES.defaultList;
+    const watchLaterList = getData(VALUES.watchLaterList) || VALUES.defaultList;
+
     event === VALUES.favouritedList
       ? dispatch(
           sortingByOptionsCreator(ACTIONS.FAVOURITED_LIST, favouritedList)
@@ -71,7 +72,7 @@ function Header() {
                 showUserList(event.currentTarget.name);
               }}
             >
-              <Link to="/list" className={styles.text}>
+              <Link to="/" className={styles.text}>
                 Избранное
               </Link>
             </button>
@@ -84,19 +85,14 @@ function Header() {
                 showUserList(event.currentTarget.name);
               }}
             >
-              <Link to="/list" className={styles.text}>
+              <Link to="/" className={styles.text}>
                 Смотреть позже
               </Link>
             </button>
           ) : null}
           <button className={styles.home}>
-            <Link to="/home" className={styles.text}>
+            <Link to="/" className={styles.text}>
               Главная
-            </Link>
-          </button>
-          <button className={styles.search}>
-            <Link to="/search" className={styles.text}>
-              Поиск
             </Link>
           </button>
           <button

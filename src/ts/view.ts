@@ -14,15 +14,18 @@ const VALUES = {
   allElements: 'Показать все',
   timer: 3000,
   currentFilmDetails: 'currentFilmDetails',
+  defaultList: [],
+  darkTheme: 'darkTheme',
+  popular: 'популярный',
+  unknown: 'неизвестный',
+  high: 'высокая',
+  low: 'низкая',
 };
 
 const userData = {
   userName: 'userName',
   userPassword: 'userPassword_123',
 };
-
-const favouritedList: number | number[] = [];
-const watchLaterList: number[] = [];
 
 const sortOptions = [
   {
@@ -94,17 +97,41 @@ function sliceList(data: FilmData[], startPage: number) {
   return data.slice(start, end);
 }
 
-function setUserData(key: string, value: string) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-function setFilmsList(key: string, value: FilmData | FilmData[]) {
+function setData(
+  key: string,
+  value: string | boolean | FilmData | FilmData[] | number | number[]
+) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
 function getData(key: string) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : null;
+}
+
+function defineList(moviesList: FilmData[], movie: FilmData, listName: string) {
+  const checkMovie = moviesList.find((film) => film.id === movie.id);
+
+  if (checkMovie) {
+    const newList = moviesList.filter((film: FilmData) => film.id !== movie.id);
+    setData(listName, newList);
+  } else {
+    const updatedList = [...moviesList, movie];
+    setData(listName, updatedList);
+  }
+}
+
+function checkMovie(
+  listName: string,
+  movie: FilmData,
+  setIcon: (arg0: boolean) => void
+) {
+  const userList = getData(listName) || VALUES.defaultList;
+  return userList.find((film: FilmData) => {
+    if (film.id === movie.id) {
+      setIcon(true);
+    }
+  });
 }
 
 export {
@@ -119,9 +146,8 @@ export {
   userData,
   showMovies,
   sliceList,
-  setUserData,
-  setFilmsList,
+  setData,
   getData,
-  favouritedList,
-  watchLaterList,
+  defineList,
+  checkMovie,
 };

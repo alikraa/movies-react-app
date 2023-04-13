@@ -5,24 +5,24 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { App } from './app';
 import { store } from './store/store';
 import { FilmDetails } from './components/film-list/film-details';
+import { AppContent } from './components/app-content/app-content';
 import './index.css';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-  },
-  {
-    path: '/home',
-    element: <App />,
-  },
-  {
-    path: '/more/:filmId',
-    element: <FilmDetails />,
-  },
-  {
-    path: '/list',
-    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <AppContent />,
+      },
+
+      {
+        path: '/more/:filmId',
+        element: <FilmDetails />,
+      },
+    ],
   },
 ]);
 

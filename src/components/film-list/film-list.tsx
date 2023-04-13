@@ -16,6 +16,7 @@ function FilmsList() {
   const genres = useSelector((state: State) => state.genres);
 
   const movies = showMovies(currentFilmsList, currentReleaseYear, genres);
+  console.log(currentFilmsList);
 
   useEffect(() => {
     if (movies) {

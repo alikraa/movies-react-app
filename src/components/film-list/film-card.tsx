@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Authorization } from '../authorization/authorization';
 import { FilmCardProps, State } from '../../ts/interfaces';
 import filmIcon from '../../assets/img/film-icon.svg';
 import selectedStarIcon from '../../assets/img/selected-star-icon.svg';
 import starIcon from '../../assets/img/star-icon.svg';
 import selectedBookmarkIcon from '../../assets/img/selected-bookmark-icon.svg';
 import bookmarkIcon from '../../assets/img/bookmark-icon.svg';
-import { setFilmsList, VALUES } from '../../ts/view';
+import {
+  getData,
+  VALUES,
+  defineList,
+  checkMovie,
+  setData,
+} from '../../ts/view';
 import styles from './film-list.module.css';
+import { useSelector } from 'react-redux';
+import { Authorization } from '../authorization/authorization';
 
 function FilmCard({
   item,
@@ -21,13 +27,10 @@ function FilmCard({
   const isAuthorization = useSelector(
     (state: State) => state.isAuthorization.authorizationFlag
   );
-  const [authorization, setAuthorization] = useState(true);
 
+  const [authorization, setAuthorization] = useState(true);
   const [star, setStar] = useState(false);
   const [bookmark, setBookmark] = useState(false);
-
-  const [favouritedList, setFavouritedList] = useState([]);
-  const [watchLaterList, setWatchLaterList] = useState([]);
 
   useEffect(() => {
     if (isAuthorization) {
@@ -35,13 +38,23 @@ function FilmCard({
     }
   });
 
+  useEffect(() => {
+    checkMovie(VALUES.favouritedList, item, setStar);
+  });
+
+  useEffect(() => {
+    checkMovie(VALUES.watchLaterList, item, setBookmark);
+  });
+
   const addList = (event: React.MouseEvent<HTMLImageElement>) => {
     if (event.currentTarget.id === VALUES.star) {
-      const updatedFavouritedList = [...favouritedList, item];
-      setFilmsList(VALUES.favouritedList, updatedFavouritedList);
+      const favouritedList =
+        getData(VALUES.favouritedList) || VALUES.defaultList;
+      defineList(favouritedList, item, VALUES.favouritedList);
     } else {
-      const updatedWatchLaterList = [...watchLaterList, item];
-      setFilmsList(VALUES.watchLaterList, updatedWatchLaterList);
+      const watchLaterList =
+        getData(VALUES.watchLaterList) || VALUES.defaultList;
+      defineList(watchLaterList, item, VALUES.watchLaterList);
     }
   };
 
@@ -101,10 +114,7 @@ function FilmCard({
           <Link
             to={`/more/${filmId}`}
             onClick={() => {
-              localStorage.setItem(
-                'currentFilmDetails',
-                JSON.stringify(filmId)
-              );
+              setData(VALUES.currentFilmDetails, filmId);
             }}
           >
             Подробнее

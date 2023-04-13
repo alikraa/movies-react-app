@@ -60,10 +60,6 @@ interface State {
   isAuthorization: {
     authorizationFlag: boolean;
   };
-  userLists: {
-    favouritedList: [];
-    watchLaterList: [];
-  };
   colorTheme: {
     darkTheme: boolean;
   };
@@ -77,11 +73,6 @@ interface AuthorizationAction {
 interface AuthorizationProps {
   isOpen: boolean;
   setIsOpen: (hidden: boolean) => void;
-}
-
-interface UserListsActions {
-  type: string;
-  payload: number | number[];
 }
 
 interface ColorThemeAction {
@@ -100,6 +91,5 @@ export type {
   GenreActions,
   AuthorizationAction,
   AuthorizationProps,
-  UserListsActions,
   ColorThemeAction,
 };

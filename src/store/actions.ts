@@ -38,10 +38,6 @@ function authorizationCreator(flag: boolean) {
   return { type: ACTIONS.IS_AUTHORIZATION, flag };
 }
 
-function userListsCreator(type: string, payload: FilmData | FilmData[]) {
-  return { type, payload };
-}
-
 function colorThemeCreator(payload: boolean) {
   return { type: ACTIONS.COLOR_THEME, payload };
 }
@@ -53,6 +49,5 @@ export {
   savePageNumberCreator,
   sortingByReleaseYear,
   authorizationCreator,
-  userListsCreator,
   colorThemeCreator,
 };

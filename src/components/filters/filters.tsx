@@ -9,6 +9,7 @@ import {
   sortingByReleaseYear,
   sortingByGenresCreator,
 } from '../../store/actions';
+import { moviesData } from '../../store/reducers';
 import { State } from '../../ts/interfaces';
 import styles from './filters.module.css';
 
@@ -68,7 +69,9 @@ function Filters() {
   };
 
   const resetAllFilters = () => {
-    dispatch(sortingByOptionsCreator(ACTIONS.POPULAR_DESCENDING, filmsList));
+    dispatch(
+      sortingByOptionsCreator(ACTIONS.POPULAR_DESCENDING, moviesData.filmList)
+    );
     dispatch(sortingByReleaseYear(VALUES.defaultYear));
     dispatch(
       sortingByGenresCreator(ACTIONS.RESET_ALL_GENRES, VALUES.defaultGenres)
@@ -79,9 +82,6 @@ function Filters() {
     <div className={styles.filters}>
       <div className={styles.header}>
         <h2 className={styles.head}>Фильтры:</h2>
-        {/* <button type="submit" className="filters__header-button">
-          Показать все
-        </button> */}
         <button
           type="submit"
           className={styles.headerButton}

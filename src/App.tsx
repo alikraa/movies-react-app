@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Header } from './components/header/header';
-import { AppContent } from './components/app-content/app-content';
 import { State } from './ts/interfaces';
+import { Outlet } from 'react-router-dom';
 import styles from './app.module.css';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       }`}
     >
       <Header />
-      <AppContent />
+      <Outlet />
     </div>
   );
 }

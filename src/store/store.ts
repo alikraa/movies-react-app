@@ -5,7 +5,6 @@ import {
   sortByYears,
   sortByGenres,
   checkAuthorization,
-  userLists,
   changeTheme,
 } from './reducers';
 
@@ -15,7 +14,6 @@ const reducers = combineReducers({
   releaseYear: sortByYears,
   genres: sortByGenres,
   isAuthorization: checkAuthorization,
-  userLists,
   colorTheme: changeTheme,
 });
 

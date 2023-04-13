@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authorizationCreator } from '../../store/actions';
 import { AuthorizationProps } from '../../ts/interfaces';
-import { userData, setUserData, VALUES } from '../../ts/view';
+import { userData, setData, VALUES } from '../../ts/view';
 import styles from './authorization.module.css';
 
 function Authorization({ isOpen, setIsOpen }: AuthorizationProps) {
@@ -13,7 +13,7 @@ function Authorization({ isOpen, setIsOpen }: AuthorizationProps) {
 
   const handleSubmit = () => {
     if (login === userData.userName && password === userData.userPassword) {
-      setUserData(login, password);
+      setData(login, password);
       dispatch(authorizationCreator(true));
     } else {
       setCheckData(false);

@@ -1,3 +1,8 @@
+interface HeaderProps {
+  darkTheme: boolean;
+  setDarkTheme: (value: boolean) => void;
+}
+
 interface InputCheckboxProps {
   id: number;
   value: string;
@@ -81,6 +86,7 @@ interface ColorThemeAction {
 }
 
 export type {
+  HeaderProps,
   InputCheckboxProps,
   FilmCardProps,
   FilmData,

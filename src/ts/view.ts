@@ -124,11 +124,12 @@ function defineList(moviesList: FilmData[], movie: FilmData, listName: string) {
 function checkMovie(
   listName: string,
   movie: FilmData,
-  setIcon: (arg0: boolean) => void
+  setIcon: (arg0: boolean) => void,
+  authorization: boolean
 ) {
   const userList = getData(listName) || VALUES.defaultList;
   return userList.find((film: FilmData) => {
-    if (film.id === movie.id) {
+    if (film.id === movie.id && authorization) {
       setIcon(true);
     }
   });

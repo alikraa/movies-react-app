@@ -39,11 +39,11 @@ function FilmCard({
   });
 
   useEffect(() => {
-    checkMovie(VALUES.favouritedList, item, setStar);
+    checkMovie(VALUES.favouritedList, item, setStar, isAuthorization);
   });
 
   useEffect(() => {
-    checkMovie(VALUES.watchLaterList, item, setBookmark);
+    checkMovie(VALUES.watchLaterList, item, setBookmark, isAuthorization);
   });
 
   const addList = (event: React.MouseEvent<HTMLImageElement>) => {

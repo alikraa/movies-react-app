@@ -7,21 +7,20 @@ import {
   colorThemeCreator,
   sortingByOptionsCreator,
 } from '../../store/actions';
-import { State } from '../../ts/interfaces';
+import { HeaderProps, State } from '../../ts/interfaces';
 import { Authorization } from '../authorization/authorization';
-import { getData, userData, VALUES } from '../../ts/view';
+import { getData, setData, userData, VALUES } from '../../ts/view';
 import sun from '../../assets/img/sun-icon.svg';
 import moon from '../../assets/img/moon-icon.svg';
 import movieLabLogo from '../../assets/img/movie-icon.svg';
 import styles from './header.module.css';
 
-function Header() {
+function Header({ darkTheme, setDarkTheme }: HeaderProps) {
   const dispatch = useDispatch();
   const isAuthorization = useSelector(
     (state: State) => state.isAuthorization.authorizationFlag
   );
 
-  const [darkTheme, setDarkTheme] = useState(false);
   const [authorization, setAuthorization] = useState(true);
 
   useEffect(() => {
@@ -114,7 +113,13 @@ function Header() {
             className={styles.themeIcon}
             alt="Theme"
             onClick={() => {
-              darkTheme ? setDarkTheme(false) : setDarkTheme(true);
+              if (darkTheme) {
+                setDarkTheme(false);
+                setData(VALUES.darkTheme, false);
+              } else {
+                setDarkTheme(true);
+                setData(VALUES.darkTheme, true);
+              }
             }}
           />
         </div>

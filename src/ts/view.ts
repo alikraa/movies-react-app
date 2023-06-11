@@ -60,25 +60,21 @@ const popularity = [
 ];
 
 function defaultSortingMovies() {
-  return [...filmsList].sort((firstMovie, secondMovie) => {
-    return firstMovie.popularity > secondMovie.popularity ? -1 : 1;
-  });
+  return [...filmsList].sort((firstMovie, secondMovie) => (
+    firstMovie.popularity > secondMovie.popularity ? -1 : 1
+  ));
 }
 
 function sortingFilmsListGenres(data: FilmData[], genres: number[]) {
-  return data.filter((item) => {
-    return genres.find((genre) => {
-      if (item.genre_ids.includes(genre)) {
-        return item;
-      }
-    });
-  });
+  return data.filter((item) => genres.find((genre) => {
+    if (item.genre_ids.includes(genre)) {
+      return item;
+    }
+  }));
 }
 
 function sortingFilmsDataReleaseYear(data: FilmData[], year: string) {
-  return data.filter((item) => {
-    return item.release_date.includes(year);
-  });
+  return data.filter((item) => item.release_date.includes(year));
 }
 
 const showMovies = (data: FilmData[], year: string, genres: number[]) => {
@@ -99,7 +95,7 @@ function sliceList(data: FilmData[], startPage: number) {
 
 function setData(
   key: string,
-  value: string | boolean | FilmData | FilmData[] | number | number[]
+  value: string | boolean | FilmData | FilmData[] | number | number[],
 ) {
   localStorage.setItem(key, JSON.stringify(value));
 }
@@ -110,9 +106,9 @@ function getData(key: string) {
 }
 
 function defineList(moviesList: FilmData[], movie: FilmData, listName: string) {
-  const checkMovie = moviesList.find((film) => film.id === movie.id);
+  const findMovie = moviesList.find((film) => film.id === movie.id);
 
-  if (checkMovie) {
+  if (findMovie) {
     const newList = moviesList.filter((film: FilmData) => film.id !== movie.id);
     setData(listName, newList);
   } else {
@@ -125,7 +121,7 @@ function checkMovie(
   listName: string,
   movie: FilmData,
   setIcon: (arg0: boolean) => void,
-  authorization: boolean
+  authorization: boolean,
 ) {
   const userList = getData(listName) || VALUES.defaultList;
   return userList.find((film: FilmData) => {

@@ -9,7 +9,9 @@ import {
 } from '../../store/actions';
 import { HeaderProps, State } from '../../ts/interfaces';
 import { Authorization } from '../authorization/authorization';
-import { getData, setData, userData, VALUES } from '../../ts/view';
+import {
+  getData, setData, userData, VALUES,
+} from '../../ts/view';
 import sun from '../../assets/img/sun-icon.svg';
 import moon from '../../assets/img/moon-icon.svg';
 import movieLabLogo from '../../assets/img/movie-icon.svg';
@@ -18,7 +20,7 @@ import styles from './header.module.css';
 function Header({ darkTheme, setDarkTheme }: HeaderProps) {
   const dispatch = useDispatch();
   const isAuthorization = useSelector(
-    (state: State) => state.isAuthorization.authorizationFlag
+    (state: State) => state.isAuthorization.authorizationFlag,
   );
 
   const [authorization, setAuthorization] = useState(true);
@@ -29,42 +31,43 @@ function Header({ darkTheme, setDarkTheme }: HeaderProps) {
       setAuthorization(true);
       dispatch(authorizationCreator(true));
     }
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(colorThemeCreator(darkTheme));
   });
 
-  const showAuthorizationField = () => {
-    authorization ? setAuthorization(false) : setAuthorization(true);
-  };
+  // eslint-disable-next-line max-len
+  const showAuthorizationField = () => (authorization ? setAuthorization(false) : setAuthorization(true));
 
   const showUserList = (event: HTMLButtonElement['name']) => {
     const favouritedList = getData(VALUES.favouritedList) || VALUES.defaultList;
     const watchLaterList = getData(VALUES.watchLaterList) || VALUES.defaultList;
 
-    event === VALUES.favouritedList
+    return event === VALUES.favouritedList
       ? dispatch(
-          sortingByOptionsCreator(ACTIONS.FAVOURITED_LIST, favouritedList)
-        )
+        sortingByOptionsCreator(ACTIONS.FAVOURITED_LIST, favouritedList),
+      )
       : dispatch(
-          sortingByOptionsCreator(ACTIONS.WATCH_LATER_LIST, watchLaterList)
-        );
+        sortingByOptionsCreator(ACTIONS.WATCH_LATER_LIST, watchLaterList),
+      );
   };
 
   return (
     <div className={styles.wrap}>
       <div className={styles.content}>
         <div className={styles.header}>
-          <img src={movieLabLogo} className={styles.logo} />
+          <img src={movieLabLogo} className={styles.logo} alt="MovieLab" />
           <h1 className={styles.name}>
-            movie<span>lab</span>
+            movie
+            <span>lab</span>
           </h1>
         </div>
 
         <div className={styles.navigation}>
           {isAuthorization ? (
             <button
+              type="button"
               name={VALUES.favouritedList}
               className={styles.favourites}
               onClick={(event) => {
@@ -78,6 +81,7 @@ function Header({ darkTheme, setDarkTheme }: HeaderProps) {
           ) : null}
           {isAuthorization ? (
             <button
+              type="button"
               name={VALUES.watchLaterList}
               className={styles.watchLater}
               onClick={(event) => {
@@ -89,7 +93,7 @@ function Header({ darkTheme, setDarkTheme }: HeaderProps) {
               </Link>
             </button>
           ) : null}
-          <button className={styles.home}>
+          <button type="button" className={styles.home}>
             <Link to="/" className={styles.text}>
               Главная
             </Link>
@@ -108,6 +112,8 @@ function Header({ darkTheme, setDarkTheme }: HeaderProps) {
           >
             {isAuthorization ? 'Выйти' : 'Войти'}
           </button>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+      jsx-a11y/no-noninteractive-element-interactions */}
           <img
             src={darkTheme ? moon : sun}
             className={styles.themeIcon}

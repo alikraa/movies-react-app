@@ -29,6 +29,7 @@ function Authorization({ isOpen, setIsOpen }: AuthorizationProps) {
       <div className={styles.field}>
         <h2 className={styles.field__header}>Авторизация</h2>
         <button
+          type="button"
           className={styles.field__closeBtn}
           onClick={() => {
             setIsOpen(true);
@@ -63,7 +64,7 @@ function Authorization({ isOpen, setIsOpen }: AuthorizationProps) {
           <br />
           <button
             type="submit"
-            className={`${styles.field__item}` + ` ${styles.field__itemBtn}`}
+            className={`${styles.field__item} ${styles.field__itemBtn}`}
           >
             Войти
           </button>

@@ -41,24 +41,16 @@ function pageNumber(state = pages, action: PageActions) {
 function sortByOptions(state = moviesData.filmList, action: SortingActions) {
   switch (action.type) {
     case ACTIONS.POPULAR_DESCENDING:
-      return (state = [...action.payload].sort((firstMovie, secondMovie) => {
-        return firstMovie.popularity > secondMovie.popularity ? -1 : 1;
-      }));
+      return (state = [...action.payload].sort((firstMovie, secondMovie) => (firstMovie.popularity > secondMovie.popularity ? -1 : 1)));
 
     case ACTIONS.POPULAR_ASCENDING:
-      return (state = [...action.payload].sort((firstMovie, secondMovie) => {
-        return firstMovie.popularity < secondMovie.popularity ? -1 : 1;
-      }));
+      return (state = [...action.payload].sort((firstMovie, secondMovie) => (firstMovie.popularity < secondMovie.popularity ? -1 : 1)));
 
     case ACTIONS.RATING_DESCENDING:
-      return (state = [...action.payload].sort((firstMovie, secondMovie) => {
-        return firstMovie.vote_average > secondMovie.vote_average ? -1 : 1;
-      }));
+      return (state = [...action.payload].sort((firstMovie, secondMovie) => (firstMovie.vote_average > secondMovie.vote_average ? -1 : 1)));
 
     case ACTIONS.RATING_ASCENDING:
-      return (state = [...action.payload].sort((firstMovie, secondMovie) => {
-        return firstMovie.vote_average < secondMovie.vote_average ? -1 : 1;
-      }));
+      return (state = [...action.payload].sort((firstMovie, secondMovie) => (firstMovie.vote_average < secondMovie.vote_average ? -1 : 1)));
 
     case ACTIONS.FAVOURITED_LIST:
       return (state = [...action.payload]);
@@ -72,7 +64,7 @@ function sortByOptions(state = moviesData.filmList, action: SortingActions) {
 
 function sortByYears(
   state = moviesData.defaultReleaseYear,
-  action: ReleaseYearAction
+  action: ReleaseYearAction,
 ) {
   switch (action.type) {
     case ACTIONS.RELEASE_YEAR:
@@ -97,7 +89,7 @@ function sortByGenres(state = [], action: GenreActions) {
 
 function checkAuthorization(
   state = authorization,
-  action: AuthorizationAction
+  action: AuthorizationAction,
 ) {
   switch (action.type) {
     case ACTIONS.IS_AUTHORIZATION:

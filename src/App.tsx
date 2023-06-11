@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Header } from './components/header/header';
 import { State } from './ts/interfaces';
-import { useEffect, useState } from 'react';
 import { VALUES, getData } from './ts/view';
 import { colorThemeCreator } from './store/actions';
 import styles from './app.module.css';
@@ -18,7 +18,7 @@ function App() {
       setDarkTheme(theme);
       dispatch(colorThemeCreator(theme));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div

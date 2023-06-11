@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FilmCardProps, State } from '../../ts/interfaces';
 import filmIcon from '../../assets/img/film-icon.svg';
 import selectedStarIcon from '../../assets/img/selected-star-icon.svg';
@@ -14,7 +15,6 @@ import {
   setData,
 } from '../../ts/view';
 import styles from './film-list.module.css';
-import { useSelector } from 'react-redux';
 import { Authorization } from '../authorization/authorization';
 
 function FilmCard({
@@ -25,7 +25,7 @@ function FilmCard({
   filmId,
 }: FilmCardProps) {
   const isAuthorization = useSelector(
-    (state: State) => state.isAuthorization.authorizationFlag
+    (state: State) => state.isAuthorization.authorizationFlag,
   );
 
   const [authorization, setAuthorization] = useState(true);
@@ -36,24 +36,22 @@ function FilmCard({
     if (isAuthorization) {
       setAuthorization(true);
     }
-  });
+  }, [isAuthorization]);
 
   useEffect(() => {
     checkMovie(VALUES.favouritedList, item, setStar, isAuthorization);
-  });
+  }, [item, isAuthorization]);
 
   useEffect(() => {
     checkMovie(VALUES.watchLaterList, item, setBookmark, isAuthorization);
-  });
+  }, [item, isAuthorization]);
 
   const addList = (event: React.MouseEvent<HTMLImageElement>) => {
     if (event.currentTarget.id === VALUES.star) {
-      const favouritedList =
-        getData(VALUES.favouritedList) || VALUES.defaultList;
+      const favouritedList = getData(VALUES.favouritedList) || VALUES.defaultList;
       defineList(favouritedList, item, VALUES.favouritedList);
     } else {
-      const watchLaterList =
-        getData(VALUES.watchLaterList) || VALUES.defaultList;
+      const watchLaterList = getData(VALUES.watchLaterList) || VALUES.defaultList;
       defineList(watchLaterList, item, VALUES.watchLaterList);
     }
   };
@@ -61,7 +59,7 @@ function FilmCard({
   const checkAuthorization = (
     event: React.MouseEvent<HTMLImageElement>,
     icon: boolean,
-    setIcon: (arg0: boolean) => void
+    setIcon: (arg0: boolean) => void,
   ) => {
     if (isAuthorization) {
       addList(event);
@@ -87,7 +85,12 @@ function FilmCard({
       </div>
       <div className={styles.filmCardInfo}>
         <div className={styles.filmCardHeader}>
-          <p className={styles.rating}>Рейтинг: {rating ?? '8.4'}</p>
+          <p className={styles.rating}>
+            Рейтинг:
+            {rating ?? '8.4'}
+          </p>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+      jsx-a11y/no-noninteractive-element-interactions */}
           <img
             src={star ? selectedStarIcon : starIcon}
             alt="Favourites"
@@ -97,6 +100,8 @@ function FilmCard({
               checkAuthorization(event, star, setStar);
             }}
           />
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
+      jsx-a11y/no-noninteractive-element-interactions */}
           <img
             src={bookmark ? selectedBookmarkIcon : bookmarkIcon}
             alt="Watch Later"
@@ -110,7 +115,7 @@ function FilmCard({
         <h3 className={styles.filmName}>
           {filmName ?? 'Истребитель демонов: Поезд "Бесконечный"'}
         </h3>
-        <button className={styles.buttonMore}>
+        <button type="button" className={styles.buttonMore}>
           <Link
             to={`/more/${filmId}`}
             onClick={() => {

@@ -9,14 +9,6 @@ interface InputCheckboxProps {
   select: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface FilmCardProps {
-  item: FilmData;
-  filmCover: string;
-  rating: number;
-  filmName: string;
-  filmId: number | number[];
-}
-
 interface FilmData {
   adult: boolean;
   backdrop_path: string | null;
@@ -32,6 +24,14 @@ interface FilmData {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+interface FilmCardProps {
+  item: FilmData;
+  filmCover: string;
+  rating: number;
+  filmName: string;
+  filmId: number | number[];
 }
 
 interface PageActions {

@@ -9,14 +9,13 @@ import styles from './film-list.module.css';
 function FilmsList() {
   const dispatch = useDispatch();
   const firstPageNumber = useSelector(
-    (state: State) => state.pageNumber.firstPageNumber
+    (state: State) => state.pageNumber.firstPageNumber,
   );
   const currentFilmsList = useSelector((state: State) => state.moviesList);
   const currentReleaseYear = useSelector((state: State) => state.releaseYear);
   const genres = useSelector((state: State) => state.genres);
 
   const movies = showMovies(currentFilmsList, currentReleaseYear, genres);
-  console.log(currentFilmsList);
 
   useEffect(() => {
     if (movies) {

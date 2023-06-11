@@ -7,7 +7,7 @@ function FilmDetails() {
   const filmsList = useSelector((state: State) => state.moviesList);
   const currentFilmId = getData(VALUES.currentFilmDetails);
   const filmId = filmsList.find((item) => item.id === currentFilmId);
-  const imageUrl = `https://image.tmdb.org/t/p/w500/`;
+  const imageUrl = 'https://image.tmdb.org/t/p/w500/';
 
   const colorTheme = useSelector((state: State) => state.colorTheme.darkTheme);
 
@@ -15,17 +15,21 @@ function FilmDetails() {
     <div className={styles.details}>
       <div className={styles.detailsHeader}>
         <img
+          alt="Movie Poster"
           src={`${imageUrl}${filmId?.backdrop_path}`}
           className={styles.backgroundImg}
         />
         <div className={styles.content}>
           <img
+            alt="Movie Cover"
             src={`${imageUrl}${filmId?.poster_path}`}
             className={styles.posterImg}
           />
           <h1 className={styles.contentHeader}>{filmId?.title}</h1>
           <p className={styles.contentRating}>
-            Рейтинг: {filmId?.vote_average}
+            Рейтинг:
+            {' '}
+            {filmId?.vote_average}
           </p>
           <p className={styles.contentOverview}>{filmId?.overview}</p>
         </div>

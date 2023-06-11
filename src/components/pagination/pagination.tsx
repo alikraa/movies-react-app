@@ -8,23 +8,23 @@ import styles from './pagination.module.css';
 function Pagination() {
   const dispatch = useDispatch();
   const firstPageNumber = useSelector(
-    (state: State) => state.pageNumber.firstPageNumber
+    (state: State) => state.pageNumber.firstPageNumber,
   );
 
   const lastPageNumber = useSelector(
-    (state: State) => state.pageNumber.lastPageNumber
+    (state: State) => state.pageNumber.lastPageNumber,
   );
-
-  useEffect(() => {
-    firstPageNumber > lastPageNumber
-      ? changePageNumber(VALUES.defaultPageNumber)
-      : firstPageNumber;
-  });
 
   const changePageNumber = (page: number) => {
     if (page < VALUES.defaultPageNumber || page > lastPageNumber) return;
     dispatch(savePageNumberCreator(ACTIONS.START_PAGE, page));
   };
+
+  useEffect(() => {
+    if (firstPageNumber > lastPageNumber) {
+      changePageNumber(VALUES.defaultPageNumber);
+    }
+  });
 
   return (
     <div className={styles.pagination}>
@@ -32,26 +32,26 @@ function Pagination() {
         <button
           type="button"
           className={styles.buttonBack}
-          onClick={() =>
-            changePageNumber(firstPageNumber - VALUES.defaultPageNumber)
-          }
-          disabled={firstPageNumber === VALUES.defaultPageNumber ? true : false}
+          onClick={() => changePageNumber(firstPageNumber - VALUES.defaultPageNumber)}
+          disabled={firstPageNumber === VALUES.defaultPageNumber}
         >
           Назад
         </button>
         <button
           type="button"
           className={styles.buttonStraight}
-          onClick={() =>
-            changePageNumber(firstPageNumber + VALUES.defaultPageNumber)
-          }
-          disabled={firstPageNumber === lastPageNumber ? true : false}
+          onClick={() => changePageNumber(firstPageNumber + VALUES.defaultPageNumber)}
+          disabled={firstPageNumber === lastPageNumber}
         >
           Вперед
         </button>
       </div>
       <p className={styles.paginationText}>
-        {firstPageNumber} of {lastPageNumber}
+        {firstPageNumber}
+        {' '}
+        of
+        {' '}
+        {lastPageNumber}
       </p>
     </div>
   );

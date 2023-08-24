@@ -26,7 +26,7 @@
 }
 
 .filmCardInfo {
-  width: 220px;
+  width: 205px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,7 +34,7 @@
 
 .filmCardCover,
 .cover {
-  width: 170px;
+  width: 155px;
   height: 228px;
 }
 

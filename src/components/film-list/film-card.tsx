@@ -14,8 +14,8 @@ import {
   checkMovie,
   setData,
 } from '../../ts/view';
-import styles from './film-list.module.css';
 import { Authorization } from '../authorization/authorization';
+import styles from './film-list.module.css';
 
 function FilmCard({
   item,

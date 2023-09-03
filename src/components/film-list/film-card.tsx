@@ -85,10 +85,7 @@ function FilmCard({
       </div>
       <div className={styles.filmCardInfo}>
         <div className={styles.filmCardHeader}>
-          <p className={styles.rating}>
-            Рейтинг:
-            {rating ?? '8.4'}
-          </p>
+          <p className={styles.rating}>{`Рейтинг: ${rating ?? '8.4'}`}</p>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
       jsx-a11y/no-noninteractive-element-interactions */}
           <img
